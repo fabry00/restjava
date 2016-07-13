@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import com.persistent.IPersistentEngine;
 import com.persistent.MemoryDB;
 import com.resources.Hero;
+import com.response.ResponseHeroes;
 import com.service.HeroService;
 
 
@@ -22,12 +23,23 @@ public class Api {
 		this.heroService.setPersistent(this.persistent);
 	}
 	
-	@GET
+	/*@GET
 	@Path("/heroes")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Hero[] heroes() {
 		Hero[] heroes = this.heroService.getHeroes();
 	    return heroes;
+	    //return Response.status(Status.ACCEPTED).entity(heroes).build();
+	}*/
+	
+	@GET
+	@Path("/heroes")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ResponseHeroes heroes() {
+		Hero[] heroes = this.heroService.getHeroes();
+		return new ResponseHeroes(heroes);
 	}
+	
+	
 		  
 }

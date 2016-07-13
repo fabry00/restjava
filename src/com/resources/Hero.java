@@ -26,6 +26,11 @@ public class Hero {
 		return "Hero [name=" + name + ", id=" + id + "]";
 	}
 	
+	@Override
+	public int hashCode(){
+		return this.id;
+	}
+	
 	public static class Builder {
 		private Hero hero;
 		private String name;
